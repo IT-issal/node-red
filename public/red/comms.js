@@ -20,7 +20,7 @@ RED.comms = (function() {
     var subscriptions = {};
     var ws;
     function connectWS() {
-        var path = location.hostname+":"+location.port+document.location.pathname;
+        var path = location.hostname+":8000"+document.location.pathname;
         path = path+(path.slice(-1) == "/"?"":"/")+"comms";
         path = "ws"+(document.location.protocol=="https:"?"s":"")+"://"+path;
         ws = new WebSocket(path);
