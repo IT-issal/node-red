@@ -14,104 +14,44 @@
  * limitations under the License.
  **/
 module.exports = {
-    // the tcp port that the Node-RED web server is listening on
-    uiPort: 1880,
+    uiPort: process.env.OPENSHIFT_NODEJS_PORT || 1880,
+    uiHost: process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1",
 
-    // By default, the Node-RED UI accepts connections on all IPv4 interfaces.
-    // The following property can be used to listen on a specific interface. For
-    // example, the following would only allow connections from the local machine.
-    //uiHost: "127.0.0.1",
-
-    // Retry time in milliseconds for MQTT connections
     mqttReconnectTime: 15000,
-
-    // Retry time in milliseconds for Serial port connections
     serialReconnectTime: 15000,
-
-    // Retry time in milliseconds for TCP socket connections
-    //socketReconnectTime: 10000,
-
-    // Timeout in milliseconds for TCP server socket connections
-    //  defaults to no timeout
-    //socketTimeout: 120000,
-
-    // Maximum number of lines in debug window before pruning
+    socketReconnectTime: 10000,
+    socketTimeout: 120000,
     debugMaxLength: 1000,
 
-    // The file containing the flows. If not set, it defaults to flows_<hostname>.json
-    //flowFile: 'flows.json',
+    flowFile: 'flows.json',
+    flowFilePretty: true,
 
-    // To enabled pretty-printing of the flow within the flow file, set the following
-    //  property to true:
-    //flowFilePretty: true,
-    
-    // By default, all user data is stored in the Node-RED install directory. To
-    // use a different location, the following property can be used
-    //userDir: '/home/nol/.node-red/',
+    userDir: process.env.OPENSHIFT_DATA_DIR+'/',
+    nodesDir: process.env.OPENSHIFT_DATA_DIR+'/nodes',
 
-    // Node-RED scans the `nodes` directory in the install directory to find nodes.
-    // The following property can be used to specify an additional directory to scan.
-    //nodesDir: '/home/nol/.node-red/nodes',
-
-    // By default, the Node-RED UI is available at http://localhost:1880/
-    // The following property can be used to specifiy a different root path.
-    // If set to false, this is disabled.
-    //httpAdminRoot: '/admin',
-
-    // You can protect the user interface with a userid and password by using the following property.
-    // The password must be an md5 hash  eg.. 5f4dcc3b5aa765d61d8327deb882cf99 ('password')
-    //httpAdminAuth: {user:"user",pass:"5f4dcc3b5aa765d61d8327deb882cf99"},
-
-    // Some nodes, such as HTTP In, can be used to listen for incoming http requests.
-    // By default, these are served relative to '/'. The following property
-    // can be used to specifiy a different root path. If set to false, this is
-    // disabled.
-    //httpNodeRoot: '/nodes',
-    
-    // To password protect the node-defined HTTP endpoints, the following property
-    // can be used.
-    // The password must be an md5 hash  eg.. 5f4dcc3b5aa765d61d8327deb882cf99 ('password')
-    //httpNodeAuth: {user:"user",pass:"5f4dcc3b5aa765d61d8327deb882cf99"},
-    
-    // When httpAdminRoot is used to move the UI to a different root path, the
-    // following property can be used to identify a directory of static content
-    // that should be served at http://localhost:1880/.
-    //httpStatic: '/home/nol/node-red-dashboard/',
-
-    // To password protect the static content, the following property can be used.
-    // The password must be an md5 hash  eg.. 5f4dcc3b5aa765d61d8327deb882cf99 ('password')
-    //httpStaticAuth: {user:"user",pass:"5f4dcc3b5aa765d61d8327deb882cf99"},
-    
-    // The following property can be used in place of 'httpAdminRoot' and 'httpNodeRoot',
-    // to apply the same root to both parts.
-    //httpRoot: '/red',
-    
-    // The following property can be used in place of 'httpAdminAuth' and 'httpNodeAuth',
-    // to apply the same authentication to both parts.
-    //httpAuth: {user:"user",pass:"5f4dcc3b5aa765d61d8327deb882cf99"},
-    
-    // The following property can be used to disable the editor. The admin API
-    // is not affected by this option. To disable both the editor and the admin
-    // API, use either the httpRoot or httpAdminRoot properties
-    //disableEditor: false,
-    
-    // The following property can be used to enable HTTPS
-    // See http://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
-    // for details on its contents.
     //https: {
     //    key: fs.readFileSync('privatekey.pem'),
     //    cert: fs.readFileSync('certificate.pem')
     //},
+    //httpRoot: '/red',
+    //httpAuth: {user:"user",pass:"5f4dcc3b5aa765d61d8327deb882cf99"},
+    //httpAdminRoot: '/admin',
+    httpAdminAuth: { user:"root", pass:"toor" },
+    //httpNodeRoot: '/nodes',
+    //httpNodeAuth: {user:"user",pass:"5f4dcc3b5aa765d61d8327deb882cf99"},
+    //httpStatic: '/home/nol/node-red-dashboard/',
+    //httpStaticAuth: {user:"user",pass:"5f4dcc3b5aa765d61d8327deb882cf99"},
 
-    // The following property can be used to configure cross-origin resource sharing
-    // in the HTTP nodes.
-    // See https://github.com/troygoode/node-cors#configuration-options for
-    // details on its contents. The following is a basic permissive set of options:
-    //httpNodeCors: {
-    //    origin: "*",
-    //    methods: "GET,PUT,POST,DELETE"
-    //},
-    
+    // The following property can be used to disable the editor. The admin API
+    // is not affected by this option. To disable both the editor and the admin
+    // API, use either the httpRoot or httpAdminRoot properties
+    //disableEditor: false,
+
+    httpNodeCors: {
+        origin: "*",
+        methods: "GET,PUT,POST,DELETE"
+    },
+
     // Anything in this hash is globally available to all functions.
     // It is accessed as context.global.
     // eg:
