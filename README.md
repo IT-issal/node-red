@@ -1,4 +1,4 @@
-# (http://nodered.org)[Node-RED] : A visual tool for wiring the Internet of Things.
+# Node-RED : A visual tool for wiring the Internet of Things (http://nodered.org)
 
 [![DEPLOY ON OpenShift](http://launch-shifter.rhcloud.com/launch/DEPLOY ON.svg)](https://openshift.redhat.com/app/console/application_type/custom?&cartridges[]=nodejs-0.10&initial_git_url=https://github.com/openshift-warrior/node-red.git&name=flows)
 

@@ -14,10 +14,9 @@
         "url":"https://github.com/openshift-warrior/node-red.git"
     },
     "private": true,
-    "main"         : "red/red.js",
+    "main"         : "red.js",
     "scripts"      : {
         "start": "node red.js",
-        "test": "./node_modules/.bin/grunt"
     },
     "contributors": [ 
         {"name": "Nick O'Leary"},
