@@ -36,7 +36,7 @@ module.exports = {
     //httpRoot: '/red',
     //httpAuth: {user:"user",pass:"5f4dcc3b5aa765d61d8327deb882cf99"},
     //httpAdminRoot: '/admin',
-    httpAdminAuth: { user:"root", pass:"toor" },
+    httpAdminAuth: { user:"jevad", pass:"5f4dcc3b5aa765d61d8327deb882cf99" },
     //httpNodeRoot: '/nodes',
     //httpNodeAuth: {user:"user",pass:"5f4dcc3b5aa765d61d8327deb882cf99"},
     //httpStatic: '/home/nol/node-red-dashboard/',
