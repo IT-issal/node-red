@@ -14,8 +14,8 @@
  * limitations under the License.
  **/
 module.exports = {
-    uiPort: process.env.OPENSHIFT_NODEJS_PORT || 1880,
     uiHost: process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1",
+    uiPort: parseInt(process.env.OPENSHIFT_NODEJS_PORT || '1880'),
 
     mqttReconnectTime: 15000,
     serialReconnectTime: 15000,
