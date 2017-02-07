@@ -16,7 +16,7 @@
     "private": true,
     "main"         : "red.js",
     "scripts"      : {
-        "start": "node red.js",
+        "start": "node red.js"
     },
     "contributors": [ 
         {"name": "Nick O'Leary"},
